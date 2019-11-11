@@ -32,6 +32,12 @@ public class ModelCheckerTest {
 
             // TO IMPLEMENT
             // assertTrue(mc.check(model, fairnessConstraint, query));
+
+            model = Model.parseModel("src/test/resources/model2.json");
+            fairnessConstraint = new FormulaParser("src/test/resources/constraint2.json").parse();
+            query = new FormulaParser("src/test/resources/ctl2.json").parse();
+
+            assertTrue(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());
