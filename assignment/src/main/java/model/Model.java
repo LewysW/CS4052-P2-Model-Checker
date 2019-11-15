@@ -39,5 +39,4 @@ public class Model {
     public Transition[] getTransitions() {
         return transitions;
     }
-
 }

@@ -1,4 +1,5 @@
 package model;
+import java.util.HashMap;
 
 /**
  * 
@@ -7,6 +8,9 @@ public class State {
     private boolean init;
     private String name;
     private String [] label;
+
+    // Added to store possible state transitions:
+    private HashMap<String, State> transitions = new HashMap<>();
 	
     /**
      * Is state an initial state
@@ -31,5 +35,15 @@ public class State {
     public String[] getLabel() {
 	return label;
     }
-	
+
+    // Add a transition:
+    public void addTransition(String action, State state) {
+        transitions.put(action, state);
+    }
+
+    // Get all transitions:
+    public HashMap<String, State> getTransitions() {
+        return  transitions;
+    }
+
 }
