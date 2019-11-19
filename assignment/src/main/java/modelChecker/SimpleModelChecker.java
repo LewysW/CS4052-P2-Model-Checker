@@ -1,29 +1,31 @@
 package modelChecker;
 
+import formula.stateFormula.And;
 import formula.stateFormula.StateFormula;
-import model.Model;
-
-import java.util.Stack;
+import java.util.*;
+import model.*;
+import formula.pathFormula.*;
+import formula.stateFormula.*;
 
 public class SimpleModelChecker implements ModelChecker {
     private Map<String, State> states = new HashMap<>();
     private List<State> initStates = new ArrayList<>();
-    private Stack<State> currentPaths = new Stack<State>();
+    private Stack<State> currentPaths = new Stack<>();
 
     @Override
     public boolean check(Model model, StateFormula constraint, StateFormula query) {
         // & the query and the constraint in order to test both at the same time:
         StateFormula formula = new And(query, constraint);
 
-        // Get all the states (represeting them with a hashmap) get all the initial states to construct valid paths:
+        // Get all the states (representing them with a hashmap) get all the initial states to construct valid paths:
         for (State state : model.getStates()) {
             states.put(state.getName(), state);
             if (state.isInit())
-                startStates.add(s);
+                initStates.add(state);
         }
 
         // Populate state transition tables:
-        for (Transition transition : model.getTransition()) {
+        for (Transition transition : model.getTransitions()) {
             String source = transition.getSource();
             State target = states.get(transition.getTarget());
             for (String action : transition.getActions())
@@ -32,7 +34,7 @@ public class SimpleModelChecker implements ModelChecker {
 
         // Check each path from each initial state to see if formula holds:
         for (State initState : initStates) {
-            if (!recursiveStateFormulaCheck(formula, initState))
+            if (!recursiveStateCheck(formula, initState))
                 return false;
         }
 
@@ -40,30 +42,37 @@ public class SimpleModelChecker implements ModelChecker {
     }
 
     private boolean recursiveStateCheck(StateFormula formula, State state) {
-        boolean leftInstance = false;
-
         // Evaluate State Formula:
-        if (leftInstance = (formula instanceof And) || formula instanceof Or) {
+        if (formula instanceof And) {
 
-            StateFormula leftChild = (And) formula).left;
-            StateFormula rightChild = (And) formula).right;
+            StateFormula leftChild = ((And) formula).left;
+            StateFormula rightChild = ((And) formula).right;
 
-            return (leftInstance ? recursiveStateCheck(leftChild, state) && recursiveStateCheck(rightChild, state) :
-                    recursiveStateCheck(leftChild, state) || recursiveStateCheck(rightChild, state));
+            return recursiveStateCheck(leftChild, state) && recursiveStateCheck(rightChild, state);
 
-        } else if (leftInstance = (formula instanceof ThereExists) || formula instanceof ForAll) {
+        } else if (formula instanceof Or) {
 
-            return (leftInstance ? thereExistsCheck(formula, state) : !thereExistsCheck(formula, state));
+            StateFormula leftChild = ((Or) formula).left;
+            StateFormula rightChild = ((Or) formula).right;
 
-        } else if (formula instanceof Not) {
+            return recursiveStateCheck(leftChild, state) || recursiveStateCheck(rightChild, state);
+
+        } else if (formula instanceof ThereExists) {
+
+            return thereExistsCheck(formula, state);
+
+        } else if (formula instanceof ForAll) {
+
+            return !thereExistsCheck(formula, state);
+
+        } else if (formula instanceof  Not) {
 
             StateFormula child = ((Not) formula).stateFormula;
             return !(recursiveStateCheck(child, state));
 
         } else if (formula instanceof AtomicProp) {
 
-            StateFormula child = (AtomicProp) formula;
-            return atomicPropertyCheck(child, state);
+            return atomicPropertyCheck((AtomicProp) formula, state);
 
         } else if (formula instanceof BoolProp) {
 
@@ -76,13 +85,15 @@ public class SimpleModelChecker implements ModelChecker {
 
     private boolean pathCheck(PathFormula formula) {
         //TODO implement functionality
+
+        return false;
     }
 
     private boolean atomicPropertyCheck(AtomicProp formula, State state) {
-        String[] stateLabeles = state.getLabel();
+        String[] stateLabels = state.getLabel();
 
         // Check to see if atomic property passed in is held by current state:
-        for (String label : stateLabeles) {
+        for (String label : stateLabels) {
             if (formula.label.equals(label))
                 return true;
         }
@@ -91,12 +102,19 @@ public class SimpleModelChecker implements ModelChecker {
     }
 
     private boolean thereExistsCheck(StateFormula formula, State state) {
-        PathFormula pathFormula = formula instanceof ThereExists ? (ThereExists) formula).pathFormula:
-        (ForAll) formula).pathFormula;
+
+        PathFormula pathFormula;
+
+        if (formula instanceof ThereExists) {
+            pathFormula = ((ThereExists) formula).pathFormula;
+        } else if (formula instanceof ForAll) {
+            pathFormula = ((ForAll) formula).pathFormula;
+        }
 
         currentPaths.push(state);
 
         //TODO implement functionality
+        return false;
     }
 
     @Override
