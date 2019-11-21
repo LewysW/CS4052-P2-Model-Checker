@@ -9,8 +9,8 @@ import java.util.Arrays;
 public class  Transition {
     private String source;
     private String target;
-    private String [] actions;
-	
+    private String[] actions;
+
     /**
      * Returns the source state of a transition.
      * @return the id of the source state

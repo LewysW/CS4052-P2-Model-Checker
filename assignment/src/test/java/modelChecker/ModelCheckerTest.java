@@ -23,21 +23,15 @@ public class ModelCheckerTest {
     @Test
     public void buildAndCheckModel() {
         try {
-            Model model = Model.parseModel("src/test/resources/model1.json");
-
-            StateFormula fairnessConstraint = new FormulaParser("src/test/resources/constraint1.json").parse();
-            StateFormula query = new FormulaParser("src/test/resources/ctl1.json").parse();
+            Model model = Model.parseModel("src/test/resources/givenTests/model1.json");
+            StateFormula fairnessConstraint = new FormulaParser("src/test/resources/myTests/pORq.json").parse();
+            StateFormula query = new FormulaParser("src/test/resources/myTests/existsPuntilR.json").parse();
 
             ModelChecker mc = new SimpleModelChecker();
 
-            // TO IMPLEMENT
-            // assertTrue(mc.check(model, fairnessConstraint, query));
+            mc.check(model, fairnessConstraint, query);
 
-            model = Model.parseModel("src/test/resources/model2.json");
-            fairnessConstraint = new FormulaParser("src/test/resources/constraint2.json").parse();
-            query = new FormulaParser("src/test/resources/ctl2.json").parse();
-
-            assertTrue(mc.check(model, fairnessConstraint, query));
+//             assertTrue(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());

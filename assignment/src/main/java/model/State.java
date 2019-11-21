@@ -1,5 +1,7 @@
 package model;
-import java.util.HashMap;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -8,10 +10,9 @@ public class State {
     private boolean init;
     private String name;
     private String [] label;
+    private List<Transition> transitions = new ArrayList<>();
+    private List<Transition> invalidTransitions = new ArrayList<>();
 
-    // Added to store possible state transitions:
-    private HashMap<String, State> transitions = new HashMap<>();
-	
     /**
      * Is state an initial state
      * @return boolean init 
@@ -36,14 +37,18 @@ public class State {
 	return label;
     }
 
-    // Add a transition:
-    public void addTransition(String action, State state) {
-        transitions.put(action, state);
+    public void addTransition(Transition transition) {
+        transitions.add(transition);
     }
 
-    // Get all transitions:
-    public HashMap<String, State> getTransitions() {
-        return  transitions;
+    public void addInvalidTransition(Transition transition) {
+        invalidTransitions.add(transition);
     }
+
+    public void removeInvalidTransitions() {
+        transitions.removeAll(invalidTransitions);
+    }
+
+    public List<Transition> getTransitions() { return transitions; }
 
 }
