@@ -2,76 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6eee0d2d-71c1-4d87-b71d-bcc66d9529e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/givenTests/model2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/myTests/existsPuntilR.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/myTests/pORq.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/FormulaParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/FormulaParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/Reader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Always.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Always.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Eventually.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Eventually.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Next.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Next.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/PathFormula.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/PathFormula.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Until.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/pathFormula/Until.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/And.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/And.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/AtomicProp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/AtomicProp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/BoolProp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/BoolProp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/ForAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/ForAll.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/Not.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/Not.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/Or.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/Or.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/StateFormula.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/StateFormula.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/ThereExists.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/formula/stateFormula/ThereExists.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Transition.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/Transition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/modelChecker/ModelChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/modelChecker/ModelChecker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/modelChecker/SimpleModelChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/modelChecker/SimpleModelChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/modelChecker/ModelCheckerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/modelChecker/ModelCheckerTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/jacoco.exec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/test/junit/classes/modelChecker.ModelCheckerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/test/junit/classes/modelChecker.ModelCheckerTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/test/junit/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/test/junit/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/test/junit/packages/modelChecker.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/test/junit/packages/modelChecker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/constraint1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/constraint2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/ctl1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/ctl2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/model1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/model2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/other-examples/query1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/other-examples/query1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/other-examples/query2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/other-examples/query2.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-modelChecker.ModelCheckerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-modelChecker.ModelCheckerTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Transition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Transition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelChecker/ModelChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelChecker/ModelChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/constraint1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/constraint1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/constraint2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/constraint2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/ctl1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/ctl1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/ctl2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/ctl2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/model1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/model1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/model2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/other-examples/query1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/other-examples/query1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/other-examples/query1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/other-examples/query1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/other-examples/query2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/other-examples/query2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/other-examples/query2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/givenTests/other-examples/query2.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -90,70 +37,43 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.66021764">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="32" selection-start-line="32" selection-end-line="32" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="179" column="128" lean-forward="true" selection-start-line="179" selection-start-column="128" selection-end-line="179" selection-end-column="128" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#check#0;class#SimpleModelChecker#0" />
-                    <element signature="method#recursiveStateFormulaCheck#0;class#SimpleModelChecker#0" />
-                    <element signature="method#recursivePathFormulaCheck#0;class#SimpleModelChecker#0" />
-                    <element signature="method#atomicPropertyCheck#0;class#SimpleModelChecker#0" />
-                    <element signature="method#checkActions#0;class#SimpleModelChecker#0" />
-                    <element signature="method#getTrace#0;class#SimpleModelChecker#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/resources/myTests/pORq.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" selection-start-line="3" selection-end-line="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/test/resources/givenTests/model1.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/resources/myTests/existsPuntilR.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" selection-start-line="3" selection-end-line="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="266" column="20" selection-start-line="266" selection-start-column="20" selection-end-line="266" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#check#0;class#SimpleModelChecker#0" />
+                <element signature="method#recursiveStateFormulaCheck#0;class#SimpleModelChecker#0" />
+                <element signature="method#recursivePathConversion#0;class#SimpleModelChecker#0" />
+                <element signature="method#recursiveUntil#0;class#SimpleModelChecker#0" />
+                <element signature="method#atomicPropertyCheck#0;class#SimpleModelChecker#0" />
+                <element signature="method#checkActions#0;class#SimpleModelChecker#0" />
+                <element signature="method#getTraceList#0;class#SimpleModelChecker#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Next.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="7" column="42" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -162,6 +82,7 @@
       <find>“</find>
       <find>Boolean</find>
       <find>states</find>
+      <find>= new</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -183,6 +104,8 @@
         <option value="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Transition.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/State.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Trace.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/TraceNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" />
       </list>
     </option>
@@ -206,6 +129,49 @@
             <path>
               <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
               <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="formula" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="formula" type="462c0819:PsiDirectoryNode" />
+              <item name="pathFormula" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -326,12 +292,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ModelCheckerTest - 2019.11.20 at 14h 12m 31s.xml">
-      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="ModelCheckerTest - 2019.11.20 at 14h 13m 17s.xml">
-      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="ModelCheckerTest - 2019.11.20 at 14h 14m 18s.xml">
       <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -356,11 +316,18 @@
     <history-entry file="ModelCheckerTest - 2019.11.20 at 20h 32m 11s.xml">
       <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="ModelCheckerTest - 2019.11.21 at 12h 13m 45s.xml">
+      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="ModelCheckerTest - 2019.11.21 at 16h 13m 09s.xml">
+      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="1920" height="1020" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.117395945" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.061366063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -368,8 +335,8 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.65571916" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295583" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.07248018" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -436,13 +403,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Next.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -574,30 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="43" column="4" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/myTests/pORq.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -612,25 +548,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/givenTests/model1.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        <state relative-caret-position="555">
+          <caret line="37" column="31" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="37" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/StateFormula.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/And.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/TraceNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Next.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="179" column="128" lean-forward="true" selection-start-line="179" selection-start-column="128" selection-end-line="179" selection-end-column="128" />
+        <state relative-caret-position="510">
+          <caret line="266" column="20" selection-start-line="266" selection-start-column="20" selection-end-line="266" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#check#0;class#SimpleModelChecker#0" />
             <element signature="method#recursiveStateFormulaCheck#0;class#SimpleModelChecker#0" />
-            <element signature="method#recursivePathFormulaCheck#0;class#SimpleModelChecker#0" />
+            <element signature="method#recursivePathConversion#0;class#SimpleModelChecker#0" />
+            <element signature="method#recursiveUntil#0;class#SimpleModelChecker#0" />
             <element signature="method#atomicPropertyCheck#0;class#SimpleModelChecker#0" />
             <element signature="method#checkActions#0;class#SimpleModelChecker#0" />
-            <element signature="method#getTrace#0;class#SimpleModelChecker#0" />
+            <element signature="method#getTraceList#0;class#SimpleModelChecker#0" />
           </folding>
         </state>
       </provider>
