@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="modelChecker.ModelCheckerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-20T20:32:10" hostname="pc5-012-l" time="0.171">
+<testsuite name="modelChecker.ModelCheckerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-21T16:13:08" hostname="pc5-012-l" time="0.133">
   <properties/>
-  <testcase name="buildAndCheckModel" classname="modelChecker.ModelCheckerTest" time="0.171"/>
+  <testcase name="buildAndCheckModel" classname="modelChecker.ModelCheckerTest" time="0.133"/>
   <system-out><![CDATA[s0-[act1]-s1
 s0-[act2]-s2
 s1-[act2]-s2
 s2-[act2]-s0
-Passed
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
