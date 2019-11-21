@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6eee0d2d-71c1-4d87-b71d-bcc66d9529e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/modelChecker/SimpleModelChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/modelChecker/SimpleModelChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/jacoco.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/test/junit/classes/modelChecker.ModelCheckerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/test/junit/classes/modelChecker.ModelCheckerTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/test/junit/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/test/junit/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/test/junit/packages/modelChecker.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/test/junit/packages/modelChecker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-modelChecker.ModelCheckerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-modelChecker.ModelCheckerTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelChecker/ModelChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelChecker/ModelChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -39,22 +25,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="266" column="20" selection-start-line="266" selection-start-column="20" selection-end-line="266" selection-end-column="20" />
+            <state relative-caret-position="-240">
+              <caret line="20" column="84" lean-forward="true" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#check#0;class#SimpleModelChecker#0" />
                 <element signature="method#recursiveStateFormulaCheck#0;class#SimpleModelChecker#0" />
                 <element signature="method#recursivePathConversion#0;class#SimpleModelChecker#0" />
-                <element signature="method#recursiveUntil#0;class#SimpleModelChecker#0" />
+                <element signature="method#nextUntil#0;class#SimpleModelChecker#0" />
                 <element signature="method#atomicPropertyCheck#0;class#SimpleModelChecker#0" />
                 <element signature="method#checkActions#0;class#SimpleModelChecker#0" />
                 <element signature="method#getTraceList#0;class#SimpleModelChecker#0" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/myTests/MutualCTL.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -101,12 +100,12 @@
         <option value="$PROJECT_DIR$/src/test/resources/myTests/constraint3.json" />
         <option value="$PROJECT_DIR$/src/test/resources/myTests/query.json" />
         <option value="$PROJECT_DIR$/src/test/resources/myTests/rORp.json" />
-        <option value="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Transition.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/State.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Trace.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/TraceNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" />
+        <option value="$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java" />
       </list>
     </option>
   </component>
@@ -172,6 +171,42 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="modelChecker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="myTests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -292,12 +327,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ModelCheckerTest - 2019.11.20 at 14h 14m 18s.xml">
-      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="ModelCheckerTest - 2019.11.20 at 14h 17m 10s.xml">
-      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="ModelCheckerTest - 2019.11.20 at 14h 18m 29s.xml">
       <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -322,12 +351,18 @@
     <history-entry file="ModelCheckerTest - 2019.11.21 at 16h 13m 09s.xml">
       <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="ModelCheckerTest - 2019.11.21 at 20h 05m 46s.xml">
+      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="ModelCheckerTest - 2019.11.21 at 20h 06m 01s.xml">
+      <configuration name="ModelCheckerTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="1920" height="1020" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.061366063" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28708646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -336,7 +371,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295583" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.07248018" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18799546" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -558,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -611,20 +639,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/myTests/MutualCTL.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/myTests/MutualModel.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="266" column="20" selection-start-line="266" selection-start-column="20" selection-end-line="266" selection-end-column="20" />
+        <state relative-caret-position="-240">
+          <caret line="20" column="84" lean-forward="true" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#check#0;class#SimpleModelChecker#0" />
             <element signature="method#recursiveStateFormulaCheck#0;class#SimpleModelChecker#0" />
             <element signature="method#recursivePathConversion#0;class#SimpleModelChecker#0" />
-            <element signature="method#recursiveUntil#0;class#SimpleModelChecker#0" />
+            <element signature="method#nextUntil#0;class#SimpleModelChecker#0" />
             <element signature="method#atomicPropertyCheck#0;class#SimpleModelChecker#0" />
             <element signature="method#checkActions#0;class#SimpleModelChecker#0" />
             <element signature="method#getTraceList#0;class#SimpleModelChecker#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
         </state>
       </provider>
     </entry>

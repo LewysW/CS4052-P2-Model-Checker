@@ -23,15 +23,15 @@ public class ModelCheckerTest {
     @Test
     public void buildAndCheckModel() {
         try {
-            Model model = Model.parseModel("src/test/resources/givenTests/model1.json");
-            StateFormula fairnessConstraint = new FormulaParser("src/test/resources/myTests/pORq.json").parse();
-            StateFormula query = new FormulaParser("src/test/resources/myTests/existsPuntilR.json").parse();
+            Model model = Model.parseModel("src/test/resources/myTests/MutualModel.json");
+            StateFormula fairnessConstraint = new FormulaParser("src/test/resources/myTests/MutualConstraint.json").parse();
+            StateFormula query = new FormulaParser("src/test/resources/myTests/MutualCTL.json").parse();
 
             ModelChecker mc = new SimpleModelChecker();
 
             mc.check(model, fairnessConstraint, query);
 
-//             assertTrue(mc.check(model, fairnessConstraint, query));
+             assertTrue(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());

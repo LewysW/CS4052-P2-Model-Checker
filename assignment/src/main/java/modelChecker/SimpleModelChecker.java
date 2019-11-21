@@ -34,7 +34,7 @@ public class SimpleModelChecker implements ModelChecker {
         }
 
         for (State initState : initStates) {
-            if(!recursiveStateFormulaCheck(query, initState))
+            if(!recursiveStateFormulaCheck(constraint, initState))
                 invalidStates.add(initState);
         }
 
@@ -191,46 +191,48 @@ public class SimpleModelChecker implements ModelChecker {
     private boolean recursiveUntil(PathFormula formula, Transition transition, HashSet<String> visitedStates, boolean isExists) {
         State target = states.get(transition.getTarget());
 
-        if (!visitedStates.contains(target.getName())) {
-            visitedStates.add(target.getName());
+        if (!transition.getTarget().equals(transition.getSource())) {
+            if (!visitedStates.contains(target.getName())) {
+                visitedStates.add(target.getName());
 
-            StateFormula left = ((Until) formula).left;
-            StateFormula right = ((Until) formula).right;
+                StateFormula left = ((Until) formula).left;
+                StateFormula right = ((Until) formula).right;
 
-            if (recursiveStateFormulaCheck(right, target)) {
+                if (recursiveStateFormulaCheck(right, target)) {
 
-                boolean outcome = checkActions(((Until) formula).getRightActions(), transition.getActions());
+                    boolean outcome = checkActions(((Until) formula).getRightActions(), transition.getActions());
 
-                if (constraintSwitch && !outcome)
-                    target.addInvalidTransition(transition);
-                else if (!isExists && !outcome)
-                    traceList.add(target.getName());
+                    if (constraintSwitch && !outcome)
+                        target.addInvalidTransition(transition);
+                    else if (!isExists && !outcome)
+                        traceList.add(target.getName());
 
-                return outcome;
+                    return outcome;
 
-            } else if (recursiveStateFormulaCheck(left, target)) {
+                } else if (recursiveStateFormulaCheck(left, target)) {
 
-                if (checkActions(((Until) formula).getLeftActions(), transition.getActions())) {
-                    if (isExists) {
-                        return target.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, visitedStates, true));
-                    } else {
-                        boolean outcome = target.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, visitedStates, false));
+                    if (checkActions(((Until) formula).getLeftActions(), transition.getActions())) {
+                        if (isExists) {
+                            return target.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, visitedStates, true));
+                        } else {
+                            boolean outcome = target.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, visitedStates, false));
 
-                        if (!outcome)
-                            traceList.add(target.getName());
+                            if (!outcome)
+                                traceList.add(target.getName());
 
-                        return outcome;
+                            return outcome;
 
+                        }
+                    } else if (constraintSwitch) {
+                        target.addInvalidTransition(transition);
                     }
-                } else if (constraintSwitch) {
-                    target.addInvalidTransition(transition);
-                }
 
-            } else {
-                if (constraintSwitch)
-                    target.addInvalidTransition(transition);
-                else if (!isExists)
-                    traceList.add(target.getName());
+                } else {
+                    if (constraintSwitch)
+                        target.addInvalidTransition(transition);
+                    else if (!isExists)
+                        traceList.add(target.getName());
+                }
             }
         }
 
@@ -295,23 +297,27 @@ public class SimpleModelChecker implements ModelChecker {
 
     @Override
     public String[] getTraceList() {
-        int traceLength = (traceList.size() * 2) - 1;
-        String[] trace = new String[traceLength];
+        if (traceList.size() > 0) {
+            int traceLength = (traceList.size() * 2) - 1;
+            String[] trace = new String[traceLength];
 
-        int i = 0;
-        for (int j = traceList.size() - 1; j >= 0; j--) {
-            trace[i] = traceList.get(j);
-            System.out.println(trace[i]);
-            i++;
-
-            if (j != 0) {
-                trace[i] = " -> ";
+            int i = 0;
+            for (int j = traceList.size() - 1; j >= 0; j--) {
+                trace[i] = traceList.get(j);
                 System.out.println(trace[i]);
                 i++;
-            }
-        }
 
-        return trace;
+                if (j != 0) {
+                    trace[i] = " -> ";
+                    System.out.println(trace[i]);
+                    i++;
+                }
+            }
+
+            return trace;
+        } else {
+            return new String[0];
+        }
     }
 
 }
