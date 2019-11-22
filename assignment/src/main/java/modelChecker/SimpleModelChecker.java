@@ -221,8 +221,9 @@ public class SimpleModelChecker implements ModelChecker {
 
             BoolProp left = new BoolProp(true);
             Not right = new Not(((Always) formula).stateFormula);
-            Set<String> leftActions = new HashSet<>();
-            Set<String> rightActions = ((Always) formula).getActions();
+            // Right actions is set to the empty set as does not apply (see report):
+            Set<String> rightActions = new HashSet<>();
+            Set<String> leftActions = ((Always) formula).getActions();
 
             Until always = new Until(left, right, leftActions, rightActions);
 
@@ -235,7 +236,6 @@ public class SimpleModelChecker implements ModelChecker {
             BoolProp left = new BoolProp(true);
             StateFormula right = ((Eventually) formula).stateFormula;
 
-            // Left actions is set to the empty set as does not apply (see report):
             Set<String> leftActions = ((Eventually) formula).getLeftActions();
             Set<String> rightActions = ((Eventually) formula).getRightActions();
 
