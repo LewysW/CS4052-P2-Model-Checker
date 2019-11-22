@@ -16,12 +16,8 @@ import org.junit.rules.ExpectedException;
 public class ModelCheckerTest {
     private final ExpectedException exception = ExpectedException.none();
 
-
-    /*
-     * An example of how to set up and call the model building methods and make
-     * a call to the model checker itself. The contents of model.json,
-     * constraint1.json and ctl.json are just examples, you need to add new
-     * models and formulas for the mutual exclusion task.
+    /**
+     * Tests a constraint which reduces the set of paths to check on the model model1.json
      */
     @Test
     public void constraintTest() {
@@ -39,6 +35,10 @@ public class ModelCheckerTest {
         }
     }
 
+    /**
+     * Tests that the processes p and q of the mutual exclusion
+     * algorithm can never both be in their critical sections
+     */
     @Test
     public void mutualExclusionTest1() {
         try {
@@ -55,6 +55,10 @@ public class ModelCheckerTest {
         }
     }
 
+    /**
+     * Tests that when either process enters their critical section via an action α ∈ a,
+     * the semaphore y always is always in use (holds)
+     */
     @Test
     public void mutualExclusionTest2() {
         try {
@@ -71,6 +75,9 @@ public class ModelCheckerTest {
         }
     }
 
+    /**
+     * Tests that whenever an action α ∈ a is taken, the semaphore y is always in use
+     */
     @Test
     public void mutualExclusionTest3() {
         try {
@@ -87,6 +94,10 @@ public class ModelCheckerTest {
         }
     }
 
+    /**
+     * Tests that there never exists a path where both
+     * processes are in their critical sections
+     */
     @Test
     public void mutualExclusionTest4() {
         try {

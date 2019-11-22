@@ -96,7 +96,7 @@ public class SimpleModelChecker implements ModelChecker {
 
         } else if (formula instanceof ThereExists) {
 
-            boolean outcome = recursivePathFormulaCheck(((ThereExists) formula).pathFormula, state, true);
+            boolean outcome = recursivePathConversion(((ThereExists) formula).pathFormula, state, true);
 
             if (constraintSwitch)
                 return true;
@@ -105,7 +105,7 @@ public class SimpleModelChecker implements ModelChecker {
 
         } else if (formula instanceof ForAll) {
 
-            boolean outcome = recursivePathFormulaCheck(((ForAll) formula).pathFormula, state, false);
+            boolean outcome = recursivePathConversion(((ForAll) formula).pathFormula, state, false);
 
             if (constraintSwitch)
                 return true;
@@ -133,8 +133,9 @@ public class SimpleModelChecker implements ModelChecker {
         }
     }
 
-    private boolean recursivePathFormulaCheck(PathFormula formula, State state, boolean isExists) throws RuntimeException {
+    private boolean recursivePathConversion(PathFormula formula, State state, boolean isExists) throws RuntimeException {
         if (formula instanceof Until) {
+            HashMap<String, Boolean> loopStates = new HashMap<>();
             StateFormula left = ((Until) formula).left;
             StateFormula right = ((Until) formula).right;
 
@@ -144,14 +145,14 @@ public class SimpleModelChecker implements ModelChecker {
                 return false;
             } else {
                 if (isExists) {
-                    boolean outcome = state.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n,  true));
+                    boolean outcome = state.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, loopStates,  true));
 
                     if (constraintSwitch)
                         return true;
 
                     return outcome;
                 } else {
-                    boolean outcome = state.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n,  false));
+                    boolean outcome = state.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, loopStates,  false));
 
                     if (constraintSwitch)
                         return true;
@@ -164,11 +165,11 @@ public class SimpleModelChecker implements ModelChecker {
 
             BoolProp left = new BoolProp(true);
             Not right = new Not(((Always) formula).stateFormula);
+            Set<String> leftActions = new HashSet<>();
             Set<String> rightActions = ((Always) formula).getActions();
 
-            Until always = new Until(left, right, null, rightActions);
-
-            return !recursivePathFormulaCheck(always, state, isExists);
+            Until always = new Until(left, right, leftActions, rightActions);
+            return !recursivePathConversion(always, state, isExists);
 
         } else if (formula instanceof Eventually) {
 
@@ -178,7 +179,7 @@ public class SimpleModelChecker implements ModelChecker {
             Set<String> rightActions = ((Eventually) formula).getRightActions();
 
             Until eventually = new Until(left, right, leftActions, rightActions);
-            return recursivePathFormulaCheck(eventually, state, isExists);
+            return recursivePathConversion(eventually, state, isExists);
 
         } else if (formula instanceof Next) {
 
@@ -188,7 +189,7 @@ public class SimpleModelChecker implements ModelChecker {
             Set<String> rightActions = ((Next) formula).getActions();
 
             Until next = new Until(left, right, leftActions, rightActions);
-            return recursivePathFormulaCheck(next, state, isExists);
+            return recursivePathConversion(next, state, isExists);
 
         } else {
 
@@ -197,36 +198,54 @@ public class SimpleModelChecker implements ModelChecker {
         }
     }
 
-    private boolean recursiveUntil(PathFormula formula, Transition transition, boolean isExists) throws RuntimeException {
+    private boolean recursiveUntil(PathFormula formula, Transition transition, HashMap<String, Boolean> loopStates, boolean isExists) throws RuntimeException {
         State target = states.get(transition.getTarget());
 
-        if (!transition.getTarget().equals(transition.getSource())) {
-            StateFormula left = ((Until) formula).left;
-            StateFormula right = ((Until) formula).right;
+        if (loopStates.containsKey(transition.getTarget()))
+            return loopStates.get(transition.getTarget());
 
-            if (recursiveStateFormulaCheck(right, target)) {
-                boolean outcome = checkActions(((Until) formula).getRightActions(), transition.getActions());
+        StateFormula left = ((Until) formula).left;
+        StateFormula right = ((Until) formula).right;
 
-                if (constraintSwitch && !outcome)
-                    target.addInvalidTransition(transition);
+        if (recursiveStateFormulaCheck(right, target)) {
+            boolean outcome = checkActions(((Until) formula).getRightActions(), transition.getActions());
 
-                return outcome;
+            if (constraintSwitch && !outcome)
+                target.addInvalidTransition(transition);
 
-            } else if (recursiveStateFormulaCheck(left, target)) {
+            if (transition.getTarget().equals(transition.getSource()))
+                loopStates.put(transition.getTarget(), outcome);
 
-                if (checkActions(((Until) formula).getLeftActions(), transition.getActions())) {
-                    checkStepCount();
-                    if (isExists) {
-                        return target.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, true));
-                    } else {
-                        return target.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, false));
-                    }
-                } else if (constraintSwitch) {
-                    target.addInvalidTransition(transition);
+            return outcome;
+
+        } else if (recursiveStateFormulaCheck(left, target)) {
+
+            if (checkActions(((Until) formula).getLeftActions(), transition.getActions())) {
+                boolean outcome;
+                checkStepCount();
+                if (isExists) {
+                    outcome = target.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, loopStates, true));
+
+                    if (transition.getTarget().equals(transition.getSource()))
+                        loopStates.put(transition.getTarget(), outcome);
+
+                    return outcome;
+                } else {
+                    outcome = target.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, loopStates, false));
+
+                    if (transition.getTarget().equals(transition.getSource()))
+                        loopStates.put(transition.getTarget(), outcome);
+
+                    return outcome;
                 }
-
+            } else if (constraintSwitch) {
+                target.addInvalidTransition(transition);
             }
+
         }
+
+        if (transition.getTarget().equals(transition.getSource()))
+            loopStates.put(transition.getTarget(), false);
 
         return false;
     }
@@ -244,7 +263,7 @@ public class SimpleModelChecker implements ModelChecker {
     }
 
     private boolean checkActions(Set<String> allowedActions, String[] actions) {
-        if (allowedActions == null || allowedActions.isEmpty())
+        if (allowedActions.isEmpty())
             return true;
 
         for (String action : actions) {
@@ -264,8 +283,25 @@ public class SimpleModelChecker implements ModelChecker {
 
     @Override
     public String[] getTrace() {
-        // TODO Auto-generated method stub
-        return null;
+        if (traceList.size() > 0) {
+            int traceLength = (traceList.size() * 2) - 1;
+            String[] trace = new String[traceLength];
+
+            int i = 0;
+            for (int j = traceList.size() - 1; j >= 0; j--) {
+                trace[i] = traceList.get(j);
+                System.out.println(trace[i]);
+                i++;
+                if (j != 0) {
+                    trace[i] = " -> ";
+                    System.out.println(trace[i]);
+                    i++;
+                }
+            }
+            return trace;
+        } else {
+            return new String[0];
+        }
     }
 
 }
