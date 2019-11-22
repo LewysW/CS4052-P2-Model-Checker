@@ -1,6 +1,0 @@
-{
-    "formula": "AFa (y && (p || q))",
-    "a": ["act3", "act4"],
-    "b": ["act5", "act6"],
-    "c": ["act1", "act2"]
-}

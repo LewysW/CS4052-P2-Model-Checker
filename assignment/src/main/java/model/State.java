@@ -49,6 +49,14 @@ public class State {
         transitions.removeAll(invalidTransitions);
     }
 
+    public void removeInvalidStateOccurance(String stateName) {
+        for(Transition transition : transitions) {
+            if (transition.getTarget().equals(stateName) || transition.getSource().equals(stateName))
+                addInvalidTransition(transition);
+        }
+        removeInvalidTransitions();
+    }
+
     public List<Transition> getTransitions() { return transitions; }
 
 }

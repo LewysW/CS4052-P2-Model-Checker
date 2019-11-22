@@ -25,5 +25,5 @@ public interface ModelChecker {
     public boolean check(Model model, StateFormula constraint, StateFormula query);
 
     // Returns a trace of the previous check attempt if it failed.
-    public String[] getTraceList();
+    public String[] getTrace();
 }
