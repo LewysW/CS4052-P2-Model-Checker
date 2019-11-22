@@ -49,7 +49,7 @@ public class State {
         transitions.removeAll(invalidTransitions);
     }
 
-    public void removeInvalidStateOccurance(String stateName) {
+    public void removeInvalidStateOccurrence(String stateName) {
         for(Transition transition : transitions) {
             if (transition.getTarget().equals(stateName) || transition.getSource().equals(stateName))
                 addInvalidTransition(transition);

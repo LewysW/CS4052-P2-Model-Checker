@@ -155,8 +155,8 @@ public class ModelCheckerTest {
 
             ModelChecker mc = new SimpleModelChecker();
 
-            exception.expect(RuntimeException.class);
-            mc.check(model, fairnessConstraint, query);
+//            exception.expect(RuntimeException.class);
+            assertFalse(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());
@@ -238,8 +238,8 @@ public class ModelCheckerTest {
 
             ModelChecker mc = new SimpleModelChecker();
 
-            exception.expect(RuntimeException.class);
-            mc.check(model, fairnessConstraint, query);
+//            exception.expect(RuntimeException.class);
+            assertFalse(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());

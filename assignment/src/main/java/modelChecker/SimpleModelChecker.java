@@ -36,7 +36,14 @@ public class SimpleModelChecker implements ModelChecker {
             states.get(source).addTransition(transition);
         }
 
+        // Try to model check within the defined limited number of recursive steps:
         try {
+            /*
+            Loop through all initial states testing the constraint, this will evaluate states (and their paths if
+            necessary). In the case of for all the paths that do not satisfy the constraint are removed. For any other
+            constraint such as there exists or holds p the initial state is evaluated and if the constraint does not
+            hold then it is removed.
+             */
             for (State initState : initStates) {
                 if(!recursiveStateFormulaCheck(constraint, initState))
                     invalidStates.add(initState);
@@ -44,38 +51,51 @@ public class SimpleModelChecker implements ModelChecker {
 
             initStates.removeAll(invalidStates);
 
+            /*
+            Loop through every state and their transitions. If any transitions contain removed states they must be
+            removed as those states are no longer accessible. This is done through use of the state class functions:
+             */
             for (Map.Entry<String, State> entry : states.entrySet()) {
                 State value = entry.getValue();
 
                 for (State invalid : invalidStates)
-                    value.removeInvalidStateOccurance(invalid.getName());
+                    value.removeInvalidStateOccurrence(invalid.getName());
 
                 value.removeInvalidTransitions();
             }
 
+            // Remove all invalid states from the states list:
             for (State invalidState : invalidStates) {
                 states.remove(invalidState.getName());
             }
 
+            /*
+             Evaluating the model against the constraint has finished so we may switch functionality to evaluating the
+             query:
+             */
             constraintSwitch = false;
 
-            // Check each path from each initial state to see if formula holds:
+            // Evaluate the query against the initial states and their paths (if necessary):
             for (State initState : initStates) {
-                if (!recursiveStateFormulaCheck(query, initState)) {
-                    traceList.add(initState.getName());
+                if (!recursiveStateFormulaCheck(query, initState))
                     return false;
-                }
             }
 
             return true;
         } catch (RuntimeException e) {
+            /*
+            If max number of steps have been reached and the model is still being checked assume that the query/
+            constraint holds and return true:
+             */
             System.out.println(e.toString());
             return true;
         }
     }
 
     private boolean recursiveStateFormulaCheck(StateFormula formula, State state) throws RuntimeException {
-        // Evaluate State Formula:
+        /*
+         Evaluate State Formula, the cases of recursion the step count is incremented and checked for being max:
+         */
         if (formula instanceof And) {
 
             StateFormula leftChild = ((And) formula).left;
@@ -96,16 +116,16 @@ public class SimpleModelChecker implements ModelChecker {
 
         } else if (formula instanceof ThereExists) {
 
-            boolean outcome = recursivePathConversion(((ThereExists) formula).pathFormula, state, true);
-
-            if (constraintSwitch)
-                return true;
-            else
-                return outcome;
+            return recursivePathConversion(((ThereExists) formula).pathFormula, state, true);
 
         } else if (formula instanceof ForAll) {
 
             boolean outcome = recursivePathConversion(((ForAll) formula).pathFormula, state, false);
+
+            /*
+             If we are currently evaluating the constraint in the case of for all then this call should return true
+             as we do not wish to remove the initial states, only the invalid paths:
+             */
 
             if (constraintSwitch)
                 return true;
@@ -135,27 +155,61 @@ public class SimpleModelChecker implements ModelChecker {
 
     private boolean recursivePathConversion(PathFormula formula, State state, boolean isExists) throws RuntimeException {
         if (formula instanceof Until) {
-            HashMap<String, Boolean> loopStates = new HashMap<>();
+
+            //Evaluates until:
+
+            List<String> loopStates = new ArrayList<>();
+            List<String> visitedStates = new ArrayList<>();
             StateFormula left = ((Until) formula).left;
             StateFormula right = ((Until) formula).right;
 
             if (recursiveStateFormulaCheck(right, state)) {
+
+                /*
+                 If the right formula (PhiTwo) already holds for the state then there is no need for further query
+                 return true:
+                 */
+
                 return true;
             } else if (!recursiveStateFormulaCheck(left, state)) {
-                return false;
+
+                 /*
+                 If the left formula (PhiOne) does not hold for the state then there is no way to continue, return
+                 false:
+                 */
+
+                 return false;
             } else {
+
                 if (isExists) {
-                    boolean outcome = state.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, loopStates,  true));
 
-                    if (constraintSwitch)
-                        return true;
+                    /*
+                    If the left formula (PhiOne) does hold and the path formula is the case of exists then check the next
+                    states (via the transitions) to see whether or not the formula holds for one of the paths (any match):
+                    */
 
-                    return outcome;
+                    return state.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, visitedStates, loopStates, true));
+
                 } else {
-                    boolean outcome = state.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, loopStates,  false));
+
+                    /*
+                    If the left formula (PhiOne) does hold and the path formula is the case of for all then check the next
+                    states (via the transitions) to see whether or not the formula holds for all of the paths (all match):
+                    */
+
+                    boolean outcome = state.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, visitedStates, loopStates, false));
+
+                    /*
+                     If we are checking the constraint then return true in order to prevent the initial state from being
+                     removed. This is because any paths voiding the for all claim will be removed from the super set of
+                     paths leaving a subset which will be evaluated by the query. Please see accompanying report for a
+                     more thorougher description:
+                     */
 
                     if (constraintSwitch)
                         return true;
+                    else if (!outcome)  // If the outcome was false and not in constraint mode then add to the fail trace.
+                        traceList.add(state.getName());
 
                     return outcome;
                 }
@@ -163,18 +217,25 @@ public class SimpleModelChecker implements ModelChecker {
 
         } else if (formula instanceof Always) {
 
+            // Converts always in terms of until and recalls function:
+
             BoolProp left = new BoolProp(true);
             Not right = new Not(((Always) formula).stateFormula);
             Set<String> leftActions = new HashSet<>();
             Set<String> rightActions = ((Always) formula).getActions();
 
             Until always = new Until(left, right, leftActions, rightActions);
+
             return !recursivePathConversion(always, state, isExists);
 
         } else if (formula instanceof Eventually) {
 
+            // Converts eventually in terms of until and recalls function:
+
             BoolProp left = new BoolProp(true);
             StateFormula right = ((Eventually) formula).stateFormula;
+
+            // Left actions is set to the empty set as does not apply (see report):
             Set<String> leftActions = ((Eventually) formula).getLeftActions();
             Set<String> rightActions = ((Eventually) formula).getRightActions();
 
@@ -183,13 +244,51 @@ public class SimpleModelChecker implements ModelChecker {
 
         } else if (formula instanceof Next) {
 
-            BoolProp left = new BoolProp(true);
+            // Converts next in terms of until:
+
+            /*
+             Here left formula (PhiOne) is set to false to prevent any states after the next ones in the
+             path being checked:
+             */
+
+            List<String> loopStates = new ArrayList<>();
+            List<String> visitedStates = new ArrayList<>();
+            BoolProp left = new BoolProp(false);
             StateFormula right = ((Next) formula).stateFormula;
+
+            // Left actions is set to the empty set as does not apply (see report):
             Set<String> leftActions = new HashSet<>();
             Set<String> rightActions = ((Next) formula).getActions();
 
             Until next = new Until(left, right, leftActions, rightActions);
-            return recursivePathConversion(next, state, isExists);
+
+            if (isExists) {
+
+                /*
+                If exists then check the next states (via the transitions) to see whether or not the formula holds
+                for one path (any match):
+                */
+
+                return state.getTransitions().stream().anyMatch(n -> recursiveUntil(next, n, visitedStates, loopStates,  true));
+
+            } else {
+
+                boolean outcome = state.getTransitions().stream().allMatch(n -> recursiveUntil(next, n, visitedStates, loopStates, false));
+
+                 /*
+                 If we are checking the constraint then return true in order to prevent the initial state from being
+                 removed. This is because any paths voiding the for all claim will be removed from the super set of
+                 paths leaving a subset which will be evaluated by the query. Please see accompanying report for a
+                 more detailed description:
+                 */
+
+                if (constraintSwitch)
+                    return true;
+                else if (!outcome)
+                    traceList.add(state.getName()); // If the outcome was false and not in constraint mode then add to the fail trace.
+
+                return outcome;
+            }
 
         } else {
 
@@ -198,56 +297,105 @@ public class SimpleModelChecker implements ModelChecker {
         }
     }
 
-    private boolean recursiveUntil(PathFormula formula, Transition transition, HashMap<String, Boolean> loopStates, boolean isExists) throws RuntimeException {
+    private boolean recursiveUntil(PathFormula formula, Transition transition, List<String> visitedStates, List<String> loopStates, Boolean isExists) throws RuntimeException {
+        // Get the state needed from the transition:
         State target = states.get(transition.getTarget());
 
-        if (loopStates.containsKey(transition.getTarget()))
-            return loopStates.get(transition.getTarget());
+        //Add the current state to the list of visited to prevent it being checked again.
+        visitedStates.add(target.getName());
 
         StateFormula left = ((Until) formula).left;
         StateFormula right = ((Until) formula).right;
 
         if (recursiveStateFormulaCheck(right, target)) {
+
+            /*
+            If the right formula (PhiTwo) already holds for this path then we must evaluate the action of the
+            transition that got us here to check whether or not the path is valid:
+            */
+
             boolean outcome = checkActions(((Until) formula).getRightActions(), transition.getActions());
 
-            if (constraintSwitch && !outcome)
+            if (constraintSwitch && !outcome)   // If the outcome is false and we are testing the constraint then this transition is invalid.
                 target.addInvalidTransition(transition);
-
-            if (transition.getTarget().equals(transition.getSource()))
-                loopStates.put(transition.getTarget(), outcome);
+            else if (!isExists && !outcome) // If the outcome is false and we are testing the query and for all then add the state to the fail trace. 
+                traceList.add(target.getName());
 
             return outcome;
 
         } else if (recursiveStateFormulaCheck(left, target)) {
 
+            /*
+            If the left formula (PhiOne) holds for this path then we must evaluate the action of the
+            transition that got us here to check whether or not the path is valid. Furthermore we prevent
+            */
+
             if (checkActions(((Until) formula).getLeftActions(), transition.getActions())) {
-                boolean outcome;
+
                 checkStepCount();
-                if (isExists) {
-                    outcome = target.getTransitions().stream().anyMatch(n -> recursiveUntil(formula, n, loopStates, true));
 
-                    if (transition.getTarget().equals(transition.getSource()))
-                        loopStates.put(transition.getTarget(), outcome);
+                /*
+                 The following code is implemented as an extension in order to reduce the number of recursions and
+                 improve efficiency. For more detail please refer to the report.
+                 */
 
-                    return outcome;
-                } else {
-                    outcome = target.getTransitions().stream().allMatch(n -> recursiveUntil(formula, n, loopStates, false));
+                ArrayList<Transition> transitionsToCheck = new ArrayList<>();
 
-                    if (transition.getTarget().equals(transition.getSource()))
-                        loopStates.put(transition.getTarget(), outcome);
-
-                    return outcome;
+                // For all transitions of this state get the ones which lead to states that we've not seen:
+                for (Transition t : target.getTransitions()) {
+                    // Ensures that loop states get checked once:
+                    if (target.getName().equals(t.getTarget()) && !loopStates.contains(target.getName())) {
+                        transitionsToCheck.add(t);
+                        loopStates.add(target.getName());
+                    } else {
+                        if (!visitedStates.contains(t.getTarget()))
+                            transitionsToCheck.add(t);
+                    }
                 }
-            } else if (constraintSwitch) {
-                target.addInvalidTransition(transition);
+
+                if (transitionsToCheck.size() == 0)
+                    return false;
+
+                if (isExists) {
+
+                    /*
+                    If exists then check the next states (via the transitions) to see whether or not the formula holds
+                    for one path (any match):
+                    */
+
+                    return transitionsToCheck.stream().anyMatch(n -> recursiveUntil(formula, n, visitedStates, loopStates, true));
+
+                } else {
+                    if (!transitionsToCheck.stream().allMatch(n -> recursiveUntil(formula, n, visitedStates, loopStates, false))) {
+
+                        /*
+                        If one paths leading from this state shows false then return false.
+                         */
+
+                        if (!constraintSwitch)  // If we are evaluating the query then add state to fail trace:
+                            traceList.add(target.getName());
+
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
             }
 
         }
 
-        if (transition.getTarget().equals(transition.getSource()))
-            loopStates.put(transition.getTarget(), false);
+        /*
+         If neither formula holds (phiOne or phiTwo) return false and carry out correct functionality depending on
+         whether evaluating the constraint or the query:
+         */
+
+        if (constraintSwitch)
+            target.addInvalidTransition(transition);
+        else if (!isExists)
+            traceList.add(target.getName());
 
         return false;
+
     }
 
     private boolean atomicPropertyCheck(AtomicProp formula, State state) {
@@ -263,6 +411,11 @@ public class SimpleModelChecker implements ModelChecker {
     }
 
     private boolean checkActions(Set<String> allowedActions, String[] actions) {
+        /*
+        If there is no set of actions to check (for example with a normal until) return true. Else loop through the set
+        checking if there is an action from the transition actions which corresponds to the set.
+         */
+
         if (allowedActions.isEmpty())
             return true;
 
@@ -275,6 +428,10 @@ public class SimpleModelChecker implements ModelChecker {
     }
 
     private void checkStepCount() throws RuntimeException {
+        /*
+        Checks if the maximum number of reclusive steps has occurred (in order to avoid a stack overflow). If throw
+        RuntimeException:
+         */
         if (numberOfSteps == MAX_STEP_COUNT)
             throw new RuntimeException("Maximum number of steps exceeded!");
         else
@@ -283,10 +440,20 @@ public class SimpleModelChecker implements ModelChecker {
 
     @Override
     public String[] getTrace() {
+        /*
+        If the trace size is greater than 0 it means that a for all error has occurred and a trace is needed
+        otherwise an empty trace should be returned:
+         */
+
         if (traceList.size() > 0) {
+
+            //Calculate the length of the traces with the inclusion of '->'s:
             int traceLength = (traceList.size() * 2) - 1;
             String[] trace = new String[traceLength];
 
+            /*
+            Build trace backwards (as it was populated back to front due to recursion) also include '->' between states:
+            */
             int i = 0;
             for (int j = traceList.size() - 1; j >= 0; j--) {
                 trace[i] = traceList.get(j);
@@ -298,6 +465,7 @@ public class SimpleModelChecker implements ModelChecker {
                     i++;
                 }
             }
+
             return trace;
         } else {
             return new String[0];
